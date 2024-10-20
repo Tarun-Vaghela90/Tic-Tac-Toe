@@ -19,11 +19,9 @@ A simple Tic-Tac-Toe game built using React.
 
    ```bash
    npm install
+3. **Start the project**:
 
-3.**Start the project**:
-    
    ```bash
    npm start
-**Open the app in your browser**:
-
--Go to http://localhost:3000 to play the game.
+4. **Open the app in your browser**:
+   Go to http://localhost:3000 to play the game.

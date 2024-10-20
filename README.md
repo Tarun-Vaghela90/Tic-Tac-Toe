@@ -14,14 +14,15 @@ A simple Tic-Tac-Toe game built using React.
 
    ```bash
    git clone https://github.com/Tarun-Vaghela90/Tic-Tac-Toe.git
+
 2. **Install dependencies**:
 
-````bash
+   ````bash
 Copy code
 npm install
 
 3.**Start the project**:
-````bash
+    ````bash
 Copy code
 npm start
 

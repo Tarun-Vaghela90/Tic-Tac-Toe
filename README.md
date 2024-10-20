@@ -17,15 +17,12 @@ A simple Tic-Tac-Toe game built using React.
 
 2. **Install dependencies**:
 
-   ````bash
-Copy code
-npm install
+   ```bash
+   npm install
 
 3.**Start the project**:
-    ````bash
-Copy code
-npm start
-
+    ```bash
+      npm start
 **Open the app in your browser**:
 
 Go to http://localhost:3000 to play the game.

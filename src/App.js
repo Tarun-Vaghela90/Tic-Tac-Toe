@@ -1,42 +1,48 @@
+
+
 import React, { useState } from 'react';
+import Square from './components/Squar';
+import './styles.css';
 
 function App() {
-  const [squares, setSquares] = useState(Array(9).fill(null)); // 9 squares
+  const initialSquares = Array(9).fill(null); // Initialize squares
+  const [squares, setSquares] = useState(initialSquares); // State for squares
   const [xIsNext, setXIsNext] = useState(true); // X starts the game
 
   // Function to handle clicking a square
-  const handleClick = (index) => {
-    const newSquares = [...squares]; // Copy the squares array
-    if (newSquares[index] || calculateWinner(newSquares)) return; // Ignore clicks if there's a winner or square is filled
-    newSquares[index] = xIsNext ? 'X' : 'O'; // Set 'X' or 'O' in the square
+  function handleClick(index) {
+    const newSquares = squares.slice(); // Copy the squares array
+    if (newSquares[index] || calculateWinner(newSquares)) {
+      return; // Ignore clicks if there's a winner or square is filled
+    }
+    if (xIsNext) {
+      newSquares[index] = 'X'; // Set 'X' in the square
+    } else {
+      newSquares[index] = 'O'; // Set 'O' in the square
+    }
     setSquares(newSquares); // Update the board
     setXIsNext(!xIsNext); // Switch turns
-  };
+  }
 
   // Determine winner
   const winner = calculateWinner(squares);
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="game">
       <h1>Tic-Tac-Toe</h1>
       <div>
         {winner ? <h2>Winner: {winner}</h2> : <h2>Next Player: {xIsNext ? 'X' : 'O'}</h2>}
       </div>
-      <div style={{ display: 'inline-grid', gridTemplateColumns: 'repeat(3, 100px)', gap: '5px' }}>
-        {squares.map((square, i) => (
-          <button
-            key={i}
-            onClick={() => handleClick(i)}
-            style={{
-              width: '100px',
-              height: '100px',
-              fontSize: '24px',
-              cursor: 'pointer',
-            }}
-          >
-            {square}
-          </button>
-        ))}
+      <div className="board">
+        {squares.map(function (square, i) {
+          return (
+            <Square 
+              key={i} 
+              value={square} 
+              onClick={function () { handleClick(i); }} 
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -55,12 +61,14 @@ function calculateWinner(squares) {
     [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+    const a = lines[i][0];
+    const b = lines[i][1];
+    const c = lines[i][2];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]; // Return the winner
     }
   }
-  return null;
+  return null; // No winner
 }
 
 export default App;

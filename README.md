@@ -24,4 +24,4 @@ A simple Tic-Tac-Toe game built using React.
    ```bash
    npm start
 4. **Open the app in your browser**:
-   Go to http://localhost:3000 to play the game.
+ -Go to http://localhost:3000 to play the game.
